@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 丹尼爾的生活筆記
-subtitle: ''
+title: 丹尼爾日誌
+subtitle: 一個北漂工程師的轉職之路
 description: ''
 keywords:
-author: John Doe
+author: Daniel Sung Blog
 language: en
 timezone: ''
 
@@ -41,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
