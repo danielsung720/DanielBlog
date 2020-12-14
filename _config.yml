@@ -8,7 +8,7 @@ subtitle: 一個北漂工程師的轉職之路
 description: ''
 keywords:
 author: Daniel Sung Blog
-language: en
+language: zh-TW
 timezone: ''
 
 # URL
@@ -32,7 +32,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -106,3 +106,8 @@ deploy:
   type: git
   repo: https://github.com/danielsung720/DanielBlog.git
   branch: gh-pages
+
+admin:
+  username: activearmy720@gmail.com
+  password_hash: $2a$10$vVcorp1lSZWYtFTuVmke2.QpXI5PO5WHsmqmpCOcbETiF1yX03E4m
+  secret: danielsung
