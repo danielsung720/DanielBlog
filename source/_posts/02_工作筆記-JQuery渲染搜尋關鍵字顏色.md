@@ -66,6 +66,9 @@ date: 2020-12-20 15:49:00
             if ($.inArray(el, uni_arr) === -1) uni_arr.push(el);
         });
 
+        // 避開html標籤 => 先渲染小寫在選染大寫
+        uni_arr = uni_arr.sort().reverse();
+
         if(uni_arr){
             for(let text of uni_arr){
                 // 取得原始html
