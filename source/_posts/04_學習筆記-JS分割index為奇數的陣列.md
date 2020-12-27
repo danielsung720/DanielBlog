@@ -1,11 +1,11 @@
-title: JS分割index為奇數的陣列
+title: 學習筆記-JS分割index為奇數的陣列
 author: Daniel Sung Blog
-tags: [JS, CODEWAR, KYU4]
+tags: [JS, CODEWAR, KYU7]
 categories: [學習筆記]
 date: 2020-12-27 20:30:00
 ---
 JS會開始寫一些基本的題目，因為對於ES6實在太不熟了XD
-繼續泡在舒適圈會壞掉的~_~
+繼續泡在舒適圈會壞掉的😂
 <!-- more -->
 ### 題目
 Write a function that returns a sequence (index begins with 1) of all the even characters from a string. If the string is smaller than two characters or longer than 100 characters, the function should return "invalid string".
@@ -57,4 +57,4 @@ console.log([...str].filter((value, index) => index % 2 === 1; ));
 ```
 
 ## 總結
-ES6真D很方便，到底IE什麼時候可以成全所有工程師阿~~~😂😂
+ES6真D很方便，到底IE什麼時候可以成全所有工程師呢😂😂
