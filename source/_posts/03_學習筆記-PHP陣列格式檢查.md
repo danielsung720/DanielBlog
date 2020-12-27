@@ -40,7 +40,7 @@ function same_structure_as(array $a, array $b): bool {
 不過看了解答真的是讚嘆...
 
 首先array_walk_recursive
-它是一個可以自己定義function去遞龜陣列的函式
+它是一個可以自己定義function去遞歸陣列的函式
 ```php
 $arr1 = ['apple' => 'red', 'banana' =>'yellow'];
 $arr2 = [$arr1, 'guava' => 'green', 'grape' => 'purple'];
