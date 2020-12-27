@@ -28,7 +28,7 @@
 <meta property="og:description" content="最近又開始刷題，不過調整了一下方式不會再像以前硬刷，不會就看解答學東西…">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-12-26T16:27:00.000Z">
-<meta property="article:modified_time" content="2020-12-26T17:13:10.238Z">
+<meta property="article:modified_time" content="2020-12-27T05:22:21.849Z">
 <meta property="article:author" content="Daniel Sung Blog">
 <meta property="article:tag" content="PHP">
 <meta property="article:tag" content="CODEWAR">
@@ -196,7 +196,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2020-12-27 00:27:00 / 修改時間：01:13:10" itemprop="dateCreated datePublished" datetime="2020-12-27T00:27:00+08:00">2020-12-27</time>
+              <time title="創建時間：2020-12-27 00:27:00 / 修改時間：13:22:21" itemprop="dateCreated datePublished" datetime="2020-12-27T00:27:00+08:00">2020-12-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +227,7 @@
 <h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">same_structure_as</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$a</span>, <span class="keyword">array</span> <span class="variable">$b</span></span>): <span class="title">bool</span> </span>&#123;</span><br><span class="line">  array_walk_recursive(<span class="variable">$a</span>, <span class="function"><span class="keyword">function</span>(<span class="params">&amp;<span class="variable">$v</span></span>) </span>&#123; <span class="variable">$v</span> = <span class="number">1</span>;&#125;);</span><br><span class="line">  array_walk_recursive(<span class="variable">$b</span>, <span class="function"><span class="keyword">function</span>(<span class="params">&amp;<span class="variable">$v</span></span>) </span>&#123; <span class="variable">$v</span> = <span class="number">1</span>;&#125;);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> serialize(<span class="variable">$a</span>) == serialize(<span class="variable">$b</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>剛看到這題目嘗試寫了20分鐘<br>不外乎就是一層層的if/else以及is_array或count之類的判斷<br>大方向有想到用遞歸寫，但一按test記憶體就爆了XD<br>不過看了解答真的是讚嘆…</p>
-<p>首先array_walk_recursive<br>它是一個可以自己定義function去遞龜陣列的函式</p>
+<p>首先array_walk_recursive<br>它是一個可以自己定義function去遞歸陣列的函式</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arr1</span> = [<span class="string">&#x27;apple&#x27;</span> =&gt; <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;banana&#x27;</span> =&gt;<span class="string">&#x27;yellow&#x27;</span>];</span><br><span class="line"><span class="variable">$arr2</span> = [<span class="variable">$arr1</span>, <span class="string">&#x27;guava&#x27;</span> =&gt; <span class="string">&#x27;green&#x27;</span>, <span class="string">&#x27;grape&#x27;</span> =&gt; <span class="string">&#x27;purple&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getColor</span>(<span class="params"><span class="variable">$value</span>, <span class="variable">$key</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;水果:&#x27;</span> . <span class="variable">$key</span> . <span class="string">&#x27;的顏色是&#x27;</span> . <span class="variable">$value</span> . <span class="string">&#x27;&lt;br&gt;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">array_walk_recursive(<span class="variable">$arr2</span>, <span class="string">&#x27;getColor&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行結果</span></span><br><span class="line">水果:apple的顏色是red</span><br><span class="line">水果:banana的顏色是yellow</span><br><span class="line">水果:guava的顏色是green</span><br><span class="line">水果:grape的顏色是purple</span><br></pre></td></tr></table></figure>
 
 <p>接下來是serialize<br>它會把傳入的參數給序列化</p>
