@@ -20,22 +20,22 @@
     var CONFIG = {"hostname":"danielsung720.github.io","root":"/DanielBlog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="JS會開始寫一些基本的題目，因為對於ES6實在太不熟了XD繼續泡在舒適圈會壞掉的😂">
+  <meta name="description" content="給予特定的字串陣列，並依照字序符合字母表序的方式計算後回傳答案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="學習筆記-JS分割index為奇數的陣列">
-<meta property="og:url" content="https://danielsung720.github.io/2020/12/27/04-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-JS%E5%88%86%E5%89%B2index%E7%82%BA%E5%A5%87%E6%95%B8%E7%9A%84%E9%99%A3%E5%88%97/index.html">
+<meta property="og:title" content="學習筆記-PHP Alphabet symmetry">
+<meta property="og:url" content="https://danielsung720.github.io/2021/01/14/09-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-PHP-Alphabet-symmetry/index.html">
 <meta property="og:site_name" content="丹尼爾日誌">
-<meta property="og:description" content="JS會開始寫一些基本的題目，因為對於ES6實在太不熟了XD繼續泡在舒適圈會壞掉的😂">
+<meta property="og:description" content="給予特定的字串陣列，並依照字序符合字母表序的方式計算後回傳答案">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-12-27T12:30:00.000Z">
-<meta property="article:modified_time" content="2020-12-27T13:01:08.285Z">
+<meta property="article:published_time" content="2021-01-14T13:52:00.000Z">
+<meta property="article:modified_time" content="2021-01-14T14:03:09.619Z">
 <meta property="article:author" content="Daniel Sung Blog">
+<meta property="article:tag" content="PHP">
 <meta property="article:tag" content="CODEWAR">
-<meta property="article:tag" content="JS">
 <meta property="article:tag" content="KYU7">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://danielsung720.github.io/2020/12/27/04-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-JS%E5%88%86%E5%89%B2index%E7%82%BA%E5%A5%87%E6%95%B8%E7%9A%84%E9%99%A3%E5%88%97/">
+<link rel="canonical" href="https://danielsung720.github.io/2021/01/14/09-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-PHP-Alphabet-symmetry/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>學習筆記-JS分割index為奇數的陣列 | 丹尼爾日誌</title>
+  <title>學習筆記-PHP Alphabet symmetry | 丹尼爾日誌</title>
   
 
 
@@ -172,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://danielsung720.github.io/2020/12/27/04-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-JS%E5%88%86%E5%89%B2index%E7%82%BA%E5%A5%87%E6%95%B8%E7%9A%84%E9%99%A3%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="https://danielsung720.github.io/2021/01/14/09-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-PHP-Alphabet-symmetry/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/DanielBlog/images/avatar.gif">
@@ -185,7 +185,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          學習筆記-JS分割index為奇數的陣列
+          學習筆記-PHP Alphabet symmetry
         </h1>
 
         <div class="post-meta">
@@ -196,7 +196,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2020-12-27 20:30:00 / 修改時間：21:01:08" itemprop="dateCreated datePublished" datetime="2020-12-27T20:30:00+08:00">2020-12-27</time>
+              <time title="創建時間：2021-01-14 21:52:00 / 修改時間：22:03:09" itemprop="dateCreated datePublished" datetime="2021-01-14T21:52:00+08:00">2021-01-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,20 +219,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>JS會開始寫一些基本的題目，因為對於ES6實在太不熟了XD<br>繼續泡在舒適圈會壞掉的😂</p>
+        <p>給予特定的字串陣列，並依照字序符合字母表序的方式計算後回傳答案</p>
 <a id="more"></a>
-<h3 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h3><p>Write a function that returns a sequence (index begins with 1) of all the even characters from a string. If the string is smaller than two characters or longer than 100 characters, the function should return “invalid string”.</p>
-<p>For example:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;abcdefghijklm&quot;</span> --&gt; [<span class="string">&quot;b&quot;</span>, <span class="string">&quot;d&quot;</span>, <span class="string">&quot;f&quot;</span>, <span class="string">&quot;h&quot;</span>, <span class="string">&quot;j&quot;</span>, <span class="string">&quot;l&quot;</span>]</span><br><span class="line"><span class="string">&quot;a&quot;</span>             --&gt; <span class="string">&quot;invalid string&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h3><p>Consider the word “abode”. We can see that the letter a is in position 1 and b is in position 2. In the alphabet, a and b are also in positions 1 and 2. Notice also that d and e in abode occupy the positions they would occupy in the alphabet, which are positions 4 and 5.</p>
+<p>Given an array of words, return an array of the number of letters that occupy their positions in the alphabet for each word. For example,Consider the word “abode”. We can see that the letter a is in position 1 and b is in position 2. In the alphabet, a and b are also in positions 1 and 2. Notice also that d and e in abode occupy the positions they would occupy in the alphabet, which are positions 4 and 5.</p>
+<p>Given an array of words, return an array of the number of letters that occupy their positions in the alphabet for each word. For example,</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Examples</span></span><br><span class="line">solve([<span class="string">&quot;abode&quot;</span>,<span class="string">&quot;ABc&quot;</span>,<span class="string">&quot;xyzD&quot;</span>]) = [<span class="number">4</span>, <span class="number">3</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
 
-<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><h4 id="My-Answer"><a href="#My-Answer" class="headerlink" title="My Answer"></a>My Answer</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">evenChars</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(string.length &lt; <span class="number">2</span> || string.length &gt; <span class="number">100</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;invalid string&#x27;</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; string.length; i = i + <span class="number">2</span>)&#123;</span><br><span class="line">      res.push(string[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><h4 id="My-Answer"><a href="#My-Answer" class="headerlink" title="My Answer"></a>My Answer</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">solve</span>(<span class="params"><span class="variable">$arr</span></span>) </span>&#123;</span><br><span class="line">  <span class="variable">$alphabet</span> = range(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;z&#x27;</span>);</span><br><span class="line">  <span class="variable">$res</span> = [];</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">foreach</span>(<span class="variable">$arr</span> <span class="keyword">as</span> <span class="variable">$words</span>)&#123;</span><br><span class="line">    <span class="variable">$wordsArr</span> = str_split(<span class="variable">$words</span>);</span><br><span class="line">    <span class="variable">$count</span> = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$wordsArr</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$val</span>)&#123;</span><br><span class="line">      <span class="keyword">if</span>(strtolower(<span class="variable">$val</span>) == <span class="variable">$alphabet</span>[<span class="variable">$key</span>])&#123;</span><br><span class="line">        <span class="variable">$count</span>++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$res</span>[] = <span class="variable">$count</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="variable">$res</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">evenChars</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (string.length &lt; <span class="number">2</span> || string.length &gt; <span class="number">100</span>) ? <span class="string">&quot;invalid string&quot;</span> : </span><br><span class="line">  [...string].filter(<span class="function">(<span class="params">x, i</span>) =&gt;</span> i % <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">solve</span>(<span class="params"><span class="variable">$arr</span></span>) </span>&#123;</span><br><span class="line">  <span class="variable">$alph</span> = range(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;z&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> array_map(<span class="function"><span class="keyword">function</span> (<span class="params"><span class="variable">$e</span></span>) <span class="title">use</span> (<span class="params"><span class="variable">$alph</span></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> count(array_intersect_assoc(<span class="variable">$alph</span>, str_split(strtolower(<span class="variable">$e</span>))));</span><br><span class="line">    &#125;, <span class="variable">$arr</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>雖然是有寫出來啦~不過看到人家的最佳解答就覺得<br>我還要寫個迴圈，有展開運算子和filter不是很方便的東西嗎o_o</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 展開運算子</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;abcdefghijklm&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸出結果</span></span><br><span class="line"><span class="built_in">console</span>.log([...str]);</span><br><span class="line">--&gt; [ <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;f&#x27;</span>, <span class="string">&#x27;g&#x27;</span>, <span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;j&#x27;</span>, <span class="string">&#x27;k&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;m&#x27;</span> ]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 這時候在配上filter，一定要配溫開水(使用箭頭函式)</span></span><br><span class="line"><span class="built_in">console</span>.log([...str].filter(<span class="function">(<span class="params">value, index</span>) =&gt;</span> index % <span class="number">2</span> === <span class="number">1</span>; ));</span><br><span class="line">--&gt; [ <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;f&#x27;</span>, <span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;j&#x27;</span>, <span class="string">&#x27;l&#x27;</span> ]</span><br></pre></td></tr></table></figure>
-
-<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>ES6真D很方便，到底IE什麼時候可以成全所有工程師呢😂😂</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這裡用了閉包的方式，將alph傳進array_map中<br>然後再用array_intersect_assoc去比對Key和Value<br>最後悠哉的把答案給count出來，真的是蠻厲害的👍</p>
 
     </div>
 
@@ -242,8 +240,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/DanielBlog/tags/PHP/" rel="tag"># PHP</a>
               <a href="/DanielBlog/tags/CODEWAR/" rel="tag"># CODEWAR</a>
-              <a href="/DanielBlog/tags/JS/" rel="tag"># JS</a>
               <a href="/DanielBlog/tags/KYU7/" rel="tag"># KYU7</a>
           </div>
 
@@ -253,13 +251,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/DanielBlog/2020/12/27/03-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-PHP%E9%99%A3%E5%88%97%E6%A0%BC%E5%BC%8F%E6%AA%A2%E6%9F%A5/" rel="prev" title="學習筆記-PHP陣列結構檢查">
-      <i class="fa fa-chevron-left"></i> 學習筆記-PHP陣列結構檢查
+    <a href="/DanielBlog/2021/01/10/08-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-PHP%E7%83%8F%E9%BE%9C%E5%B0%AC%E7%83%8F%E9%BE%9C/" rel="prev" title="學習筆記-PHP烏龜尬烏龜">
+      <i class="fa fa-chevron-left"></i> 學習筆記-PHP烏龜尬烏龜
     </a></div>
-      <div class="post-nav-item">
-    <a href="/DanielBlog/2020/12/28/05-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-JS%E5%88%A9%E7%94%A8%E9%81%9E%E6%AD%B8%E6%89%BE%E5%87%BA%E5%80%92%E7%BD%AE%E5%BE%8C%E5%BA%8F%E4%B8%80%E6%A8%A3%E7%9A%84%E6%95%B8%E5%AD%97/" rel="next" title="學習筆記-JS利用遞歸找出倒置後序一樣的數字">
-      學習筆記-JS利用遞歸找出倒置後序一樣的數字 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -318,7 +313,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">題目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">2.</span> <span class="nav-text">解答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#My-Answer"><span class="nav-number">2.1.</span> <span class="nav-text">My Answer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Best-Practices"><span class="nav-number">2.2.</span> <span class="nav-text">Best Practices</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number"></span> <span class="nav-text">總結</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">題目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">2.</span> <span class="nav-text">解答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#My-Answer"><span class="nav-number">2.1.</span> <span class="nav-text">My Answer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Best-Practices"><span class="nav-number">2.2.</span> <span class="nav-text">Best Practices</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number"></span> <span class="nav-text">總結</span></a></div>
       </div>
       <!--/noindex-->
 
