@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/DanielBlog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/DanielBlog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/DanielBlog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/DanielBlog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/DanielBlog/css/main.css">
+
+
+<link rel="stylesheet" href="/DanielBlog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"danielsung720.github.io","root":"/DanielBlog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="這禮拜真的快被這個libary搞瘋，因為網路上幾乎找不到中文的教學 英文破加上第一次閱讀google的document…真的是場硬仗">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工作筆記-PHP Google Ad Manager API">
+<meta property="og:url" content="https://danielsung720.github.io/2021/01/23/11-%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98-PHP-Google-Ad-Manager-API/index.html">
+<meta property="og:site_name" content="丹尼爾日誌">
+<meta property="og:description" content="這禮拜真的快被這個libary搞瘋，因為網路上幾乎找不到中文的教學 英文破加上第一次閱讀google的document…真的是場硬仗">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-01-23T07:58:00.000Z">
+<meta property="article:modified_time" content="2021-01-23T08:38:09.969Z">
+<meta property="article:author" content="Daniel Sung Blog">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="GOOGLE">
+<meta property="article:tag" content="Ad Manager">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://danielsung720.github.io/2021/01/23/11-%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98-PHP-Google-Ad-Manager-API/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>工作筆記-PHP Google Ad Manager API | 丹尼爾日誌</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <a href="/DanielBlog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">丹尼爾日誌</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一個北漂工程師的轉職之路</p>
+      <a>
+        <img class="custom-logo-image" src="/DanielBlog/images/avatar.png" alt="丹尼爾日誌">
+      </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/DanielBlog/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/DanielBlog/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/DanielBlog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/DanielBlog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/DanielBlog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://danielsung720.github.io/2021/01/23/11-%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98-PHP-Google-Ad-Manager-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/DanielBlog/images/avatar.gif">
+      <meta itemprop="name" content="Daniel Sung Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丹尼爾日誌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          工作筆記-PHP Google Ad Manager API
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-01-23 15:58:00 / 修改時間：16:38:09" itemprop="dateCreated datePublished" datetime="2021-01-23T15:58:00+08:00">2021-01-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/DanielBlog/categories/%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">工作筆記</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>這禮拜真的快被這個libary搞瘋，因為網路上幾乎找不到中文的教學</p>
+<p>英文破加上第一次閱讀google的document…真的是場硬仗</p>
+<a id="more"></a>
+<h3 id="資源"><a href="#資源" class="headerlink" title="資源"></a>資源</h3><p>Composer: <a href=".https://github.com/googleads/googleads-php-lib">googleads-php-lib</a><br>Document: <a href=".https://developers.google.com/ad-manager/api/start">Google Ad Manager</a></p>
+<h3 id="重點注意事項"><a href="#重點注意事項" class="headerlink" title="重點注意事項"></a>重點注意事項</h3><h4 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h4><p>首先是文件提到的adsapi_php.ini<br>這是最重要的，尤其是這四個參數</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[AD_MANAGER]</span></span><br><span class="line"><span class="attr">networkCode</span> = <span class="string">&quot;INSERT_NETWORK_CODE_HERE&quot;</span></span><br><span class="line"><span class="attr">applicationName</span> = <span class="string">&quot;INSERT_APPLICATION_NAME_HERE&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[OAUTH2]</span></span><br><span class="line"><span class="attr">jsonKeyFilePath</span> = <span class="string">&quot;INSERT_ABSOLUTE_PATH_TO_OAUTH2_JSON_KEY_FILE_HERE&quot;</span></span><br><span class="line"><span class="attr">scopes</span> = <span class="string">&quot;https://www.googleapis.com/auth/dfp&quot;</span></span><br></pre></td></tr></table></figure>
+<p>AD_MANAGER就是官方的API要去設定的參數<br>OAUTH2就有意思了，可以參考<br>Justin Lee Blog: <a href=".https://medium.com/@justinlee_78563/%E9%97%9C%E6%96%BCoauth-2-0-%E4%BB%A5facebook%E7%82%BA%E4%BE%8B-6f78a4a55f52">關於OAuth 2.0-以Facebook為例</a><br>wiki: <a href=".https://zh.wikipedia.org/wiki/%E5%BC%80%E6%94%BE%E6%8E%88%E6%9D%83">開放授權</a><br>doc: <a href=".https://tools.ietf.org/html/rfc6749">document</a></p>
+<h4 id="get-session"><a href="#get-session" class="headerlink" title="get session"></a>get session</h4><p>其實仔細去看每一個Example，就會發現，它是需要身分驗證的<br>也就跟剛剛所提到的OAUTH2有關係，會發現範例中都有這樣的CODE<br>所以切記<strong>adsapi_php.ini要和執行下面這段程式的檔案放在同個資料夾</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$oAuth2Credential</span> = (<span class="keyword">new</span> OAuth2TokenBuilder())-&gt;fromFile()</span><br><span class="line">    -&gt;build();</span><br><span class="line"><span class="variable">$session</span> = (<span class="keyword">new</span> AdManagerSessionBuilder())-&gt;fromFile()</span><br><span class="line">    -&gt;withOAuth2Credential(<span class="variable">$oAuth2Credential</span>)</span><br><span class="line">    -&gt;build();</span><br></pre></td></tr></table></figure>
+
+<p>那…如果我的adsapi_php.ini在別的資料夾怎麼辦？<br>別擔心，生個路徑出來給它就對了</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$configPath</span> = <span class="keyword">__DIR__</span> . <span class="string">&#x27;/config/adsapi_php.ini&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$oAuth2Credential</span> = (<span class="keyword">new</span> OAuth2TokenBuilder())-&gt;fromFile(<span class="variable">$configPath</span>)</span><br><span class="line">    -&gt;build();</span><br><span class="line"><span class="variable">$session</span> = (<span class="keyword">new</span> AdManagerSessionBuilder())-&gt;fromFile(<span class="variable">$configPath</span>)</span><br><span class="line">    -&gt;withOAuth2Credential(<span class="variable">$oAuth2Credential</span>)</span><br><span class="line">    -&gt;build();</span><br></pre></td></tr></table></figure>
+
+<h4 id="service"><a href="#service" class="headerlink" title="service"></a>service</h4><p>受限於翻譯，第一次閱讀文件我還是使用了通靈<br>想說既然要找到我需要的資料，那就是廣告的數據<br>八九不離十就是找report，結果還真的被我矇到了XD<br>接著只要開心的把剛生出來的<strong>session丟進ServiceFactory中的createXXXXXXService即可</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$serviceFactory</span> = <span class="keyword">new</span> ServiceFactory();</span><br><span class="line"><span class="variable">$reportService</span> = <span class="variable">$serviceFactory</span>-&gt;createReportService(<span class="variable">$session</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="ohter-object"><a href="#ohter-object" class="headerlink" title="ohter object"></a>ohter object</h4><p>接下來就是去看你所需要找的資料其他的物件怎麼去使用<br>好比說這次因為要找報告，有用到了<strong>ReportQuery</strong><br>所以必須去設定你要找什麼樣的資料，像SQL那樣<br>這些還真的得手動去玩一玩，才知道會拉回什麼資料(汗)<br>到了這步驟後，建議還是去<strong>爬一下這些物件的參數和說明</strong><br><strong>秘密就是裡面的註解寫得比document還清楚…</strong>(對我來說啦😂)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 設定報告要查詢的欄位資料</span></span><br><span class="line"><span class="variable">$reportQuery</span> = <span class="keyword">new</span> ReportQuery();</span><br><span class="line"><span class="variable">$reportQuery</span>-&gt;setDimensions(</span><br><span class="line">    [</span><br><span class="line">        Dimension::ORDER_ID,</span><br><span class="line">    ]</span><br><span class="line">);</span><br><span class="line"><span class="variable">$reportQuery</span>-&gt;setDimensionAttributes(</span><br><span class="line">    [</span><br><span class="line">        DimensionAttribute::ORDER_TRAFFICKER,</span><br><span class="line">    ]</span><br><span class="line">);</span><br><span class="line"><span class="variable">$reportQuery</span>-&gt;setColumns(</span><br><span class="line">    [</span><br><span class="line">        Column::AD_SERVER_IMPRESSIONS, </span><br><span class="line">    ]</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h4><p>其實這次最大的收穫就是學著怎麼去看懂文件和程式<br>以前被中文的資源寵壞了，套件裝裝範例丟丟參數放放<br>使用套件時完全不懂這些參數是做什麼用的，才知道自己有多廢XD<br>是要開始爬人家的github了…爬一次經驗值不少阿!!!</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/DanielBlog/tags/PHP/" rel="tag"># PHP</a>
+              <a href="/DanielBlog/tags/GOOGLE/" rel="tag"># GOOGLE</a>
+              <a href="/DanielBlog/tags/Ad-Manager/" rel="tag"># Ad Manager</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/DanielBlog/2021/01/23/10-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-PHP-Moving-Zeros-To-The-End/" rel="prev" title="學習筆記-PHP Moving Zeros To The End">
+      <i class="fa fa-chevron-left"></i> 學習筆記-PHP Moving Zeros To The End
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B3%87%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">資源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E9%BB%9E%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="nav-number">2.</span> <span class="nav-text">重點注意事項</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="nav-number">2.1.</span> <span class="nav-text">設定檔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get-session"><span class="nav-number">2.2.</span> <span class="nav-text">get session</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#service"><span class="nav-number">2.3.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ohter-object"><span class="nav-number">2.4.</span> <span class="nav-text">ohter object</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">2.5.</span> <span class="nav-text">結語</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Daniel Sung Blog</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/DanielBlog/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/DanielBlog/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/DanielBlog/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/danielsung720" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;danielsung720" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:activearmy720@gmail.com" title="E-Mail → mailto:activearmy720@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daniel Sung Blog</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/DanielBlog/lib/anime.min.js"></script>
+  <script src="/DanielBlog/lib/velocity/velocity.min.js"></script>
+  <script src="/DanielBlog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/DanielBlog/js/utils.js"></script>
+
+<script src="/DanielBlog/js/motion.js"></script>
+
+
+<script src="/DanielBlog/js/schemes/pisces.js"></script>
+
+
+<script src="/DanielBlog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
